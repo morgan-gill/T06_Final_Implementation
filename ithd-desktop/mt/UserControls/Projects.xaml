@@ -1,0 +1,23 @@
+﻿<UserControl x:Class="mt.UserControls.Projects"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:mt.UserControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800"
+             >
+    <UserControl.Resources>
+
+    </UserControl.Resources>
+    <Grid x:Name="Dashboard">
+        <TextBox x:Name="txtSearch" HorizontalAlignment="Left" Height="23" Margin="44,26,0,0" TextWrapping="Wrap" Text="Search projects" VerticalAlignment="Top" Width="284"/>
+        <DataGrid HorizontalAlignment="Left" Height="100" Margin="44,94,0,0" VerticalAlignment="Top" Width="650"
+                  ItemsSource="{Binding Projects}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" IsReadOnly="True" Binding="{Binding ID}" Visibility="Collapsed" />
+                <DataGridTextColumn Header="Project Name" Binding="{Binding ProjectName}" />
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</UserControl>

@@ -1,0 +1,90 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:mt.UserControls"
+             xmlns:Data="clr-namespace:mt.Data" x:Class="mt.UserControls.AdminDashboard"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+
+    <UserControl.Resources>
+        <Style TargetType="Label">
+            <Setter Property="Foreground" Value="#FFE0E0E0"/>
+        </Style>
+        <Style TargetType="Expander">
+            <Setter Property="Foreground" Value="#FFE0E0E0"/>
+        </Style>
+        <Style TargetType="Grid">
+            <Setter Property="Background" Value="#FF1F1F1F"/>
+        </Style>
+        <Style TargetType="ScrollViewer">
+            <Setter Property="Background" Value="#FF1F1F1F"/>
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="Foreground" Value="#FFE0E0E0"/>
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="Foreground" Value="#FFE0E0E0"/>
+            <Setter Property="Background" Value="#FF2D2D2D"/>
+        </Style>
+        <Style TargetType="TabControl">
+            <Setter Property="Background" Value="#FF2D2D2D"/>
+            
+        </Style>
+        <Style TargetType="TabItem">
+            <Setter Property="Background" Value="#FF2D2D2D"/>
+            <Setter Property="Foreground" Value="#FFE0E0E0"/>
+        </Style>
+        <Style TargetType="DataGrid">
+            <Setter Property="Background" Value="#FF2D2D2D"/>
+            <Setter Property="Foreground" Value="#FFE0E0E0"/>
+        </Style>
+
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FF191919" Offset="0"/>
+                            <GradientStop Color="#FF321919" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Grid.Background>
+        <TabControl x:Name="tabTabs" Margin="32,64,32,32" TabStripPlacement="Left" Foreground="Black">
+            <TabItem Header="Projects">
+                <local:ProjectList x:Name="projectList"/>
+            </TabItem>
+            <TabItem Header="Clients">
+                <Grid>
+                    
+
+                    <TextBox x:Name="txtSearchClients" HorizontalAlignment="Left" Height="23" Margin="16,16,0,0" TextWrapping="Wrap" Text="Search Clients" VerticalAlignment="Top" Width="256"/>
+
+
+                    <DataGrid x:Name="datClients" Margin="16,48,16,16" ItemsSource="{Binding}" AutoGenerateColumns="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Last Name"/>
+                            <DataGridTextColumn Header="First Name"/>
+                            <DataGridTextColumn Header="Active Projects"/>
+                            <DataGridTextColumn Header="Phone Number"/>
+                            <DataGridTextColumn Header="Email Address"/>
+
+                        </DataGrid.Columns> >
+
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Financials">
+                <Grid>
+                    <TextBox x:Name="txtSearchRecords" HorizontalAlignment="Left" Height="23" Margin="16,16,0,0" TextWrapping="Wrap" Text="Search Records" VerticalAlignment="Top" Width="256"/>
+                    <DataGrid x:Name="datFinancials" Margin="16,48,16,16">
+                        <DataGrid.DataContext>
+                            <Data:Transaction/>
+                        </DataGrid.DataContext>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+        </TabControl>
+
+    </Grid>
+</UserControl>
